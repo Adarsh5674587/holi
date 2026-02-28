@@ -3,33 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Holi | Pavan chandrakant Khaire Public School</title>
+<title>Happy Holi 2026 | Pavan chandrakant Khaire Public School</title>
 
 <style>
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #ff512f, #dd2476);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: #333;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
-    background: white;
-    width: 90%;
-    max-width: 600px;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    background: #ffffff;
+    width: 92%;
+    max-width: 700px;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 h1 {
     color: #dd2476;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 h2 {
@@ -40,20 +42,20 @@ h2 {
 
 img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 20px;
 }
 
 input {
     padding: 12px;
-    width: 70%;
+    width: 65%;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 16px;
 }
 
 button {
-    padding: 12px 20px;
+    padding: 12px 22px;
     border: none;
     background: #dd2476;
     color: white;
@@ -61,17 +63,40 @@ button {
     border-radius: 8px;
     cursor: pointer;
     margin-top: 10px;
+    transition: 0.3s;
 }
 
 button:hover {
     background: #ff512f;
+    transform: scale(1.05);
 }
 
 .message {
-    margin-top: 20px;
+    margin-top: 25px;
     font-size: 18px;
-    color: #333;
-    font-weight: 500;
+    line-height: 1.6;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.message.show {
+    opacity: 1;
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: red;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
 }
 </style>
 </head>
@@ -82,13 +107,14 @@ button:hover {
     <h1>🌈 Happy Holi 2026 🎨</h1>
     <h2>Pavan chandrakant Khaire Public School</h2>
 
-    <!-- Holi Image -->
     <img src="https://images.unsplash.com/photo-1615484477877-6d4b6c6c3b9e" 
-         alt="Students playing Holi">
+         alt="Holi Celebration">
+
+    <audio id="holiMusic" src="holi.mp3"></audio>
 
     <input type="text" id="nameInput" placeholder="Enter Your Name">
     <br>
-    <button onclick="showWish()">View Greeting</button>
+    <button onclick="showWish()">Celebrate 🎉</button>
 
     <div class="message" id="wishMessage"></div>
 </div>
@@ -102,11 +128,43 @@ function showWish() {
         return;
     }
 
-    document.getElementById("wishMessage").innerHTML =
-        "Dear <strong>" + name + "</strong>,<br><br>" +
-        "May this Holi bring vibrant colors of joy, success, and prosperity into your life.<br>" +
-        "Wishing you a safe and joyful celebration.<br><br>" +
-        "<strong>Happy Holi!</strong> 🎨🌸";
+    // Play music
+    var music = document.getElementById("holiMusic");
+    if (music) music.play();
+
+    // Show message
+    var messageBox = document.getElementById("wishMessage");
+    messageBox.classList.add("show");
+
+    messageBox.innerHTML =
+        "<strong>Dear " + name + ",</strong><br><br>" +
+        "May this Holi bring vibrant colors of happiness, success, and prosperity into your life.<br>" +
+        "Wishing you a joyful and safe celebration.<br><br>" +
+        "<strong>Happy Holi!</strong> 🎨🌸<br><br>" +
+        "----------------------------------------<br><br>" +
+        "<strong>प्रिय " + name + ",</strong><br><br>" +
+        "या होळीच्या सणानिमित्त तुमच्या आयुष्यात आनंद, यश आणि समृद्धीचे रंग भरभरून येवोत.<br>" +
+        "तुम्हाला सुरक्षित आणि आनंदी होळीच्या हार्दिक शुभेच्छा!<br><br>" +
+        "<strong>होळीच्या हार्दिक शुभेच्छा!</strong> 🌈🎊";
+
+    createConfetti();
+}
+
+function createConfetti() {
+    for (let i = 0; i < 80; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        document.body.appendChild(confetti);
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = 
+            ["red","yellow","blue","green","pink","orange"][Math.floor(Math.random()*6)];
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 5000);
+    }
 }
 </script>
 
