@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Holi | Pavanchandrakant Khaire Public School</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+h1 {
+    color: #dd2476;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 12px;
+    width: 70%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    background: #dd2476;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #ff512f;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🌈 Happy Holi 2026 🎨</h1>
+    <h2>Pavanchandrakant Khaire Public School</h2>
+
+    <!-- Holi Image -->
+    <img src="https://images.unsplash.com/photo-1615484477877-6d4b6c6c3b9e" 
+         alt="Students playing Holi">
+
+    <input type="text" id="nameInput" placeholder="Enter Your Name">
+    <br>
+    <button onclick="showWish()">View Greeting</button>
+
+    <div class="message" id="wishMessage"></div>
+</div>
+
+<script>
+function showWish() {
+    var name = document.getElementById("nameInput").value;
+
+    if(name.trim() === "") {
+        alert("Please enter your name.");
+        return;
+    }
+
+    document.getElementById("wishMessage").innerHTML =
+        "Dear <strong>" + name + "</strong>,<br><br>" +
+        "May this Holi bring vibrant colors of joy, success, and prosperity into your life.<br>" +
+        "Wishing you a safe and joyful celebration.<br><br>" +
+        "<strong>Happy Holi!</strong> 🎨🌸";
+}
+</script>
+
+</body>
+</html>
